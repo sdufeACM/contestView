@@ -11,7 +11,12 @@ function App() {
     const [data, setData] = useState([]);
     useEffect(() => {
         const now = new Date().getTime();
-        axios.get('https://contests.sdutacm.cn/contests.json')
+        axios.get('https://contest.sdufeacm.club/data',{
+            headers: {
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
+                'referer': 'https://contest.sdufeacm.club/'
+            }
+        })
             .then(res => {
                 setLoading(false);
                 setData(res.data
