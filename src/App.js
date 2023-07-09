@@ -11,12 +11,7 @@ function App() {
     const [data, setData] = useState([]);
     useEffect(() => {
         const now = new Date().getTime();
-        axios.get('https://contest.sdufeacm.club/data',{
-            headers: {
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36',
-                'referer': 'https://contest.sdufeacm.club/'
-            }
-        })
+        axios.get('https://contest.sdufeacm.club/data')
             .then(res => {
                 setLoading(false);
                 setData(res.data
@@ -48,11 +43,16 @@ function App() {
 
         }
     }
+
     const renderInfo = (text, record) => {
         return (
-            <a href={record.link} target="_blank" rel="noreferrer">
-                {text}   <Text keyboard><FieldTimeOutlined />{getTime(record)}</Text>
-            </a>
+            <div>
+                <a href={record.link} target="_blank" rel="noreferrer">
+                    {text}   <Text keyboard><FieldTimeOutlined />{getTime(record)}</Text>
+                </a>
+            </div>
+
+
         )
     }
 
